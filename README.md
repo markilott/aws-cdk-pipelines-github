@@ -11,7 +11,7 @@ Specifically, we have (by default):
 - A Prod account, for production deployment, obviously.
 - A Tools (Shared Services) account, where CodePipeline will be used to build and deploy into Dev, UAT and Prod.
 
-You can read about the concepts behind it and more detailed instructions [in this Medium article](https://markilott.medium.com/cdk-cross-account-pipelines-3126e0434b0c).
+You can read about the concepts behind it and more detailed instructions [in this Medium article](https://markilott.medium.com/cdk-cross-account-pipelines-part-2-dcb5517a0610).
 
 This Readme assumes you already have a good understanding of CDK deployments. If you are just starting out, read the blog article first.
 
