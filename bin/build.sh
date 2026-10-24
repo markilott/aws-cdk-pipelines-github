@@ -1,7 +1,6 @@
 #!/bin/bash
-# Used in CodeBuild pipeline to install Npm modules.
-# Can also be used locally to prepare for cdk deploy.
-# Does not update npm modules to new versions.
-echo Installing npm modules...
-
-(cd lib/application/lambda-src && npm ci --production)
+# The Lambda function is now bundled automatically via esbuild as part of
+# `cdk synth` (NodejsFunction), so there is no longer a separate install step
+# required here. Kept as a no-op so the "npm run build" step in the pipeline
+# and README still works unchanged.
+echo "Nothing to build - the Lambda function is bundled automatically during cdk synth"

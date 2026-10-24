@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-new */
 import {
     CfnOutput, Stack, StackProps,
     Stage, StageProps,
@@ -9,7 +7,8 @@ import {
     RestApi, EndpointType, LambdaIntegration,
     JsonSchemaType, JsonSchemaVersion,
 } from 'aws-cdk-lib/aws-apigateway';
-import { Function, Code, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 
 interface ApplicationStackProps extends StackProps {
     version: string,
@@ -28,11 +27,13 @@ export class ApplicationStack extends Stack {
         super(scope, id, props);
 
         // Lambda function
-        const lambdaFnc = new Function(this, 'lambdaFnc', {
+        const lambdaFnc = new NodejsFunction(this, 'lambdaFnc', {
             functionName: 'pipelineTestFnc',
-            code: Code.fromAsset(`${__dirname}/lambda-src`),
-            runtime: Runtime.NODEJS_14_X,
-            handler: 'index.handler',
+            entry: `${__dirname}/lambda-src/index.ts`,
+            runtime: Runtime.NODEJS_24_X,
+            bundling: {
+                sourceMap: true,
+            },
             environment: {
                 VERSION: (props.version) || 'Unknown',
                 ACCOUNT: this.account,

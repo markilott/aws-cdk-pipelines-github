@@ -7,7 +7,6 @@
  * cdk deploy --all -a "npx ts-node bin/app-deploy.ts"
  */
 
-/* eslint-disable no-new */
 import 'source-map-support/register';
 import { App } from 'aws-cdk-lib';
 import { ApplicationStack } from '../lib/application/application-stage';
