@@ -8,7 +8,6 @@
  * - Push code to CodeCommit repo.
  */
 
-/* eslint-disable no-new */
 import 'source-map-support/register';
 import { App } from 'aws-cdk-lib';
 import { PipelineStack } from '../lib/pipeline/pipeline-stack';
